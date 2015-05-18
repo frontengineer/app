@@ -7,7 +7,10 @@
 
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
-var localConfig = require('../../config/local.env')
+var localConfig = require('../../config/local.env');
+
+var token = require('crypto').randomBytes(48).toString('base64');
+
 var transporter = nodemailer.createTransport({
   service : localConfig.email.provider,
   auth: {
@@ -16,6 +19,7 @@ var transporter = nodemailer.createTransport({
   }
 });
 var rand, mailOptions, host, link;
+console.log('invite token', token);
 
 module.exports = {
   sendAccountVerifyLink : function(userData){
@@ -27,6 +31,12 @@ module.exports = {
       subject : "Please confirm your Email account",
       html : "Hello,<br> Please Click on the link to verify your email for " + userData.company + ".<br><a href="+link+">Click here to verify</a>"
     };
+
+    /**
+     * TODO
+     * Replace this token code with something more secure/user-specific...maybe with secret within encoding
+     */
+    return { priority : new Date().getTime(), invite: token };
 
     console.log('current mailoptions: ', mailOptions);
     /**

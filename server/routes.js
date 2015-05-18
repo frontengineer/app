@@ -9,7 +9,7 @@ var formidable = require('formidable');
 var util = require('util');
 var querystring = require('querystring');
 var fs = require('fs');
-
+var localConfig = require('./config/local.env');
 /** DP REQUIRED **/
 
 var Firebase = require('firebase');
@@ -25,7 +25,7 @@ var domainChecker = function(req, res, next){
 };
 
 
-var tokenGenerator = new FirebaseTokenGenerator("vcsKsUbF6rTb8pBm7WZwwnZza3bVzHqXuguzxrSE");
+var tokenGenerator = new FirebaseTokenGenerator(localConfig.domainSecret);
 var AUTH_TOKEN = tokenGenerator.createToken({uid: "simplelogin:20", some: "arbitrary", data: "here"});
 console.log('the token', AUTH_TOKEN);
 
