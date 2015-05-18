@@ -1,0 +1,15 @@
+<div ng-controller="NavbarCtrl">
+  <div class="container-fluid">
+    <div id="navbar-main">
+      <a id="team-add" class="fa fa-plus btn pull-right" ng-click="createTeam()"></a>
+      <h3>Teams </h3>
+      <ul id="team-list" class="no-bullet">
+        <li ng-repeat="team in teams track by $index" ng-class="{active: isActive(testAmpNoEscaping.link)}">
+          <a class="" ng-href="/#/team/{{team.link}}">{{team.title}}</a>
+          <!--<a class="pull-right " href="javascript:void(0)"><span class="fa fa-user-plus">&nbsp;</span></a>-->
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

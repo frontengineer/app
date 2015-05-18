@@ -1,0 +1,20 @@
+<!--<div class="col-md-12">-->
+  <!--<h1>Team: {{title}}</h1>-->
+<!--This is the main.nav view.-->
+<!--</div>-->
+<div class="row-fluid">
+  <div id="main-navigation">
+    <div ng-include="'components/libarybar/library_launch.html'"></div>
+    <div ng-include="'components/teambar/teambar.html'"></div>
+    <div ng-include="'components/messagebar/messagebar.html'"></div>
+  </div>
+
+  <div id="main-header">
+    Members Products Specs
+  </div>
+  <div id="main-footer">
+    Basic status info
+  </div>
+
+  <div id="main-content" ui-view=""></div>
+</div>

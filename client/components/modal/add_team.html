@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Team</h3>
+</div>
+<div class="modal-body">
+   <label for="teamName">Team Name</label>:
+  <input name="teamName" ng-model="teamName" ng-change="okLookAhead()" />
+  <div class="vpad-10">
+    <div class="{{errorStatus}}">
+      <h3 ><span class="fa fa-warning" style="color: red;"></span> Darn</h3>
+      {{error}}
+    </div>
+  </div>
+  <h5 class="juiceit">Team up!</h5>
+
+  <p class="modal-msg-array">
+    <span class="fa fa-user"> people</span>,
+    <span class="fa fa-lightbulb-o"> products</span>,
+    <span class="fa fa-bar-chart"> analytics</span>
+  </p>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-primary" ng-click="ok()">Create Team</button>
+</div>

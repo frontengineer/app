@@ -1,0 +1,165 @@
+@import 'bootstrap/less/bootstrap.less';
+@import 'font-awesome/less/font-awesome.less';
+
+@icon-font-path: '/bower_components/bootstrap/fonts/';
+@fa-font-path: '/bower_components/font-awesome/fonts';
+
+/** Colors **/
+@primaryColor : #2ab27b;// #9FB4CC; //#AAD8B0; //#468966; //#45B29D; //#5A1F00; //#A9CC66 -- like #2ab27b;
+@primaryColorDarker : darken(@primaryColor, 50%);
+@primaryColorLighter : lighten(@primaryColor, 51%);// IF using green(#2ab27b) make 50%
+
+.generate-padding(20);
+
+.generate-padding(@n, @i:1) when (@i =< @n){
+  .pad-@{i}{
+    padding: ~"@{i}px";
+  }
+
+  .generate-padding(@n, (@i + 1));
+}
+.generate-v-padding(20);
+
+.generate-v-padding(@n, @i:1) when (@i =< @n){
+  .vpad-@{i}{
+    padding: ~"@{i}px 0px";
+  }
+
+  .generate-v-padding(@n, (@i + 1));
+}
+/**
+ * App-wide Styles
+ */
+
+
+
+// injector
+@import 'lesshat.less';
+@import 'main.nav/main.nav.less';
+@import 'main/main.less';
+@import 'products/products.less';
+@import 'resources/resources.less';
+@import 'teamCreation/team.creation.less';
+@import 'modal/add_team.less';
+@import 'modal/modal.less';
+@import 'teambar/teambar.less';
+// endinjector
+
+//body {
+//  position: fixed;
+//  top: 0;
+//  right: 0;
+//  bottom: 0;
+//  left: 0;
+//  overflow: auto;
+//}
+#main-navigation {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  //width: 225px;
+  overflow: auto;
+  background: darken(@primaryColor, 15%); //#F6E497;
+  color : @primaryColorLighter;
+
+  .library-nav {
+    display : block;
+    background : darken(@primaryColor, 25%);
+    padding: 10px 0 10px 10px;
+    a.logo {
+      font-size: 1.5em;
+      color: @primaryColorLighter;
+    }
+
+  }
+  a {
+    color : @primaryColorLighter;
+    //.drop-shadow(0 1px 1px rgba(20,20,20,0.5));
+  }
+  #navbar-main{
+    margin-left: -15px;
+    margin-right: -15px;
+    &:hover {
+      #team-add {
+        .btn-default;
+        background: none;
+
+        color: @primaryColorLighter;
+      }
+    }
+
+    h3 {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 0 3px 0;
+      width: 90%;
+      font-size: 1.2em;
+      //border-bottom: 1px solid darken(@primaryColorLighter, 10%);
+    }
+    #team-add {
+      padding: 4px 6px;
+    }
+    #team-add, #msg-add {
+      margin:5px 5px 0 0;
+      font-size: 12px;
+      &:hover {
+        //.btn-default;
+      }
+    }
+
+  }
+}
+
+#main-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 225px;
+  z-index: 5;
+  height: 59px;
+  overflow: hidden;
+  background: #fff;
+}
+#main-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 225px;
+  z-index: 5;
+  height: 59px;
+  overflow: hidden;
+  background: #fff;
+}
+
+#main-content {
+  margin: 60px 0 0 210px;
+  padding-left: 15px;
+  padding-bottom: 50px;
+  background: #eee;
+}
+
+
+/***** GLOABLA CLASES **********/
+.center {
+  text-align: center;
+}
+
+.juiceit {
+  font-size: 115%;
+  color: #EB974E;
+  font-weight: bold;
+  display: block;
+}
+
+
+.no-bullet {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  & > li {
+    list-style: none;
+  }
+}
+

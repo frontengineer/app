@@ -1,0 +1,10 @@
+{
+  "firebase": "glaring-inferno-1396",
+  "public": "dist/public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "rules" : "security-rules.json"
+}

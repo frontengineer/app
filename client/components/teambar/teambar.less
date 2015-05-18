@@ -1,0 +1,40 @@
+#team-list{
+  margin-top: 5px;
+  &>li {
+    position: relative;
+    padding-left: 25px;
+    .clearfix();
+    &:hover {
+      background: darken(@primaryColor, 2%);
+      //color : lighten(@primaryColor, 20%);
+      &>a{
+        color: darken(@primaryColor, 30%);
+        &.pull-right{
+          //color: lighten(@primaryColor, 20%);
+          //background: darken(@primaryColor, 25%)
+          position: absolute;
+          left: 100%;
+          top: 0;
+          //border-left: 1px solid @primaryColorLighter;
+          display: block;
+          &:hover{
+            //color: #fff;
+          }
+        }
+      }
+    }
+    &>a {
+      line-height: 1.75em;
+      display: block;
+      //color: @primaryColorDarker;
+      &.pull-right{
+        width: 35px;
+        display: none;
+        text-align: center;
+      }
+      &.pull-left{
+        width: 160px;
+      }
+    }
+  }
+}

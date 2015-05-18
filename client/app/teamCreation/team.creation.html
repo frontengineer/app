@@ -1,0 +1,30 @@
+<div class="col-md-12">
+  <form ng-submit="addDomain()">
+    <div class="vpad-10">
+      <label for="domain_name">Team</label>
+      <input id="domain_name" ng-model="teamSpace.teamName" />{{domainName}}
+    </div>
+
+    <div class="vpad-10">
+      <label>Domain</label>
+      <input id="domain_url" ng-model="teamSpace.url" />
+    </div>
+
+    <div class="vpad-10">
+      <label>Email</label>
+      <input type="email" id="email" ng-model="teamSpace.email" />
+    </div>
+
+    <div class="vpad-10">
+      <label>Password</label>
+      <input type="password" id="pass" ng-model="teamSpace.password" />
+    </div>
+
+
+    <input type="submit" value="Add">
+  </form>
+  <div ng-repeat="domain in domains">{{domain.label}}</div>
+
+
+
+</div>
