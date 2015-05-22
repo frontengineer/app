@@ -19,3 +19,4 @@ dist
 ehthumbs.db
 Thumbs.db
 /server/config/local.env.js
+/client/app/fake_schema.json

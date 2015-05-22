@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./send.controller');
+var controller = require('./start_domain.controller.js');
 
 var router = express.Router();
 
