@@ -27,5 +27,27 @@ angular.module('simplTreeApp')
             templateUrl: 'app/partials/signin.html'
           }
         }
+      })
+      .state('confirmed', {
+        url: '/confirmed',
+        views : {
+          'content@' : {
+            templateUrl: 'app/partials/confirmed.html'
+          }
+        }
+      })
+      .state('confirmed.revite', {
+        views : {
+          'content@' : {
+            templateUrl: 'app/partials/confirmed_domain_create.html'
+          }
+        }
+      })
+      .state('confirmed.invite', {
+        views : {
+          'content@' : {
+            templateUrl: 'app/partials/confirmed.invite.html'
+          }
+        }
       });
   });

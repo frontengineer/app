@@ -12,11 +12,14 @@ var fs = require('fs');
 var localConfig = require('./config/local.env');
 /** DP REQUIRED **/
 
+var Queue = require('firebase-queue');
 var Firebase = require('firebase');
 var csv = require("fast-csv");
 var request = require('request');
-var FirebaseTokenGenerator = require("firebase-token-generator");
+//var FirebaseTokenGenerator = require("firebase-token-generator");
 
+//console.log('firebase', process.FIREBASE_URL);
+var myRootRef = new Firebase(localConfig.FIREBASE_URL);
 
 /** DP VARS **/
 var domainChecker = function(req, res, next){
@@ -24,10 +27,6 @@ var domainChecker = function(req, res, next){
   next();
 };
 
-
-var tokenGenerator = new FirebaseTokenGenerator(localConfig.domainSecret);
-var AUTH_TOKEN = tokenGenerator.createToken({uid: "simplelogin:20", some: "arbitrary", data: "here"});
-console.log('the token', AUTH_TOKEN);
 
 module.exports = function(app) {
 
@@ -39,7 +38,7 @@ module.exports = function(app) {
   //});
   // Insert routes below
   app.use('/api/authenticate', require('./api/authenticate'));
-  app.use('/api/send', require('./api/send'));
+  app.use('/api/startDomain', require('./api/start_domain'));
   app.use('/api/verify', require('./api/verify'));
   app.use('/api/messages', require('./api/message'));
   app.use('/api/things', require('./api/thing'));
@@ -55,12 +54,6 @@ module.exports = function(app) {
       console.log('the domain', req.host);
       res.sendfile(app.get('appPath') + '/index.html');
     });
-
-  //app.route('/login')
-  //  .get(function(req, res){
-  //    res.writeHead(301, {'Location': 'a.simpltree.com'})
-  //    res.end();
-  //  });
 
   app.route('/uploads')
     .post(function(req, res) {

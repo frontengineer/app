@@ -1,25 +1,47 @@
 'use strict';
 
 angular.module('simplTreeApp')
-  .controller('MainCtrl', function ($scope, $http, $window, Auth, $log) {
+  .controller('MainCtrl', function ($scope, $http, $window, Auth, $log, UserStore, $state) {
     $scope.awesomeThings = [1,2];
-    $scope.user = {
-      to: 'dreply@yahoo.com'
-    };
+    $scope.user = {};
+    $scope.error = '';
 
     //$http.get('/api/things').success(function(data) {
     //  $scope.awesomeThings = data;
     //  console.log('ang call /api/send', data);
     //});
 
+    /**
+     * USER Journey
+     * request domain
+     * if email exist say "trying to create team? or login to domain"
+     *
+     */
 
-    //
 
     $scope.initSignup = function(){
-      console.log('init signup', $scope.user);
-      $http.post('/api/send', $scope.user).success(function(data) {
-        console.log('ang call /api/send', data);
-      });
+      UserStore.checkForUser($scope.user)
+        .then(function(data){
+          $log.log('data came back', data);
+          if(!data.err){
+            $log.log('the data', data);
+            $scope.error = '';
+            // add index and fire email
+            if(!data.payload){
+              UserStore.addReference($scope.user).then(function(){
+                $state.go('confirmed');
+              });
+            } else {
+              $state.go('confirmed.revite');
+            }
+          } else {
+            $scope.error = data.err
+          }
+        })
+        .catch(function(baddata){
+          $log.log('the bad data', baddata);
+        });
+
     };
     $scope.login = function(){
       $log.log($scope.user);

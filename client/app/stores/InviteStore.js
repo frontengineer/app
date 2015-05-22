@@ -1,11 +1,16 @@
 'use strict';
 
 angular.module('simplTreeApp')
- .factory('dataStore', function(FIREBASE_URL){
+ .factory('InviteStore', function(FIREBASE_URL, $q){
+
+    var store = new Firebase(FIREBASE_URL + '/pending_domains');
+
     return {
-      getStore : function(refPath){
-        var pathing = (refPath !== '') ? FIREBASE_URL + refPath : FIREBASE_URL;
-        return new Firebase(pathing);
+      addDomain : function(req){
+        var deferred = $q.defer();
+        console.log(req);
+
+        return deferred.promise;
       }
     }
   });

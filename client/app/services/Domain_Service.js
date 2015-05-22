@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('simplTreeApp')
- .factory('DomainService', function(dataStore, Auth, FIREBASE_URL, $firebaseArray, $firebaseObject, $q, $log){
-    var domainStore = dataStore.getStore('/domains');
+ .factory('DomainService', function(GeneralStore, Auth, FIREBASE_URL, $firebaseArray, $firebaseObject, $q, $log){
+    var domainStore = GeneralStore.getStore('/domains');
     var status;
 
     return {

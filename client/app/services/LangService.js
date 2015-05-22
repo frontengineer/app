@@ -1,9 +1,15 @@
 'use strict';
 
 angular.module('simplTreeApp')
- .factory('ErrorService', function($log){
+ .factory('LangService', function($log){
 
     return {
-      user_not_found : 'User not found'
+
+      i104: 'Continue Sign-Up',
+
+      /* ERROR MESSAGES */
+      e131 : 'Invalid Characters',
+      e132 : 'User not found',
+      e133 : 'Please correct the email or company name'
     };
   });
